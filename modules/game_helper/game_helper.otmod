@@ -1,0 +1,10 @@
+Module
+  name: game_helper
+  description: Helper window with tabs
+  author: wizer
+  website: https://github.com/edubart/otclient
+  sandboxed: true
+  dependencies: [ game_interface, game_mainpanel ]
+  scripts: [ game_helper ]
+  @onLoad: init()
+  @onUnload: terminate()

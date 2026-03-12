@@ -1,0 +1,79 @@
+MainWindow
+  id: gameHelperWindow
+  !text: tr('Game Helper')
+  size: 420 300
+  @onEscape: modules.game_helper.hide()
+
+  Panel
+    id: tabBar
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 28
+    layout:
+      type: horizontalBox
+      spacing: 4
+      fit-children: true
+
+    Button
+      id: tabOneButton
+      !text: tr('Aba 1')
+      width: 90
+      height: 22
+
+    Button
+      id: tabTwoButton
+      !text: tr('Aba 2')
+      width: 90
+      height: 22
+
+  Panel
+    id: tabOneContent
+    anchors.top: tabBar.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-top: 8
+    layout:
+      type: verticalBox
+      spacing: 6
+
+    Label
+      !text: tr('Conteúdo de teste da aba 1')
+      text-wrap: true
+      text-auto-resize: true
+      color: #c0c0c0
+
+    Button
+      !text: tr('Botão A')
+      width: 80
+
+    Button
+      !text: tr('Botão B')
+      width: 80
+
+  Panel
+    id: tabTwoContent
+    anchors.top: tabBar.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-top: 8
+    layout:
+      type: verticalBox
+      spacing: 6
+    visible: false
+
+    Label
+      !text: tr('Conteúdo de teste da aba 2')
+      text-wrap: true
+      text-auto-resize: true
+      color: #c0c0c0
+
+    Button
+      !text: tr('Ação X')
+      width: 80
+
+    Button
+      !text: tr('Ação Y')
+      width: 80
