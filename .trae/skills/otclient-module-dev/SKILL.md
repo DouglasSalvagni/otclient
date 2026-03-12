@@ -17,6 +17,7 @@ description: "Cria e mantém módulos OTClient em Lua/OTUI/OTMOD. Use quando imp
 - Arquivo de manifesto: `<modulo>.otmod`
 - Script principal Lua: `<modulo>.lua` (ou lista em `scripts`)
 - Interface OTUI opcional: `<modulo>.otui`
+- Interface HTML opcional: `<modulo>.html` com CSS dedicado
 
 ## Padrão de manifesto `.otmod`
 
@@ -51,6 +52,19 @@ description: "Cria e mantém módulos OTClient em Lua/OTUI/OTMOD. Use quando imp
 - Coloque boot de módulo em `onInit`
 - Coloque lógica sensível ao estado online em `onGameStart`/`onGameEnd`
 - Registre eventos por `registerEvents` e `registerUIEvents` para cleanup automático
+
+## UI HTML/CSS no módulo
+
+- Use `Controller:loadHtml('arquivo.html')` para carregar UI HTML
+- Mantenha CSS em arquivo separado e referencie com `<link href="arquivo.css" />`
+- Limpe UI com `Controller:unloadHtml()` ou `self:hide()` + `:destroy()`
+- Recarregue quando `self.ui` estiver `nil` ou destruída
+
+## Callbacks e eventos com segurança
+
+- Armazene callbacks em `self.callbacks` para evitar coleta de lixo
+- Prefira funções nomeadas para eventos recorrentes
+- Para timeouts/intervalos, guarde a referência e cancele no `terminate()`
 
 ## Checklist de implementação
 

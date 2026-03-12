@@ -11,6 +11,7 @@ description: "Projeta interfaces OTClient com OTUI e CSS-like. Use quando criar 
 - Ao estilizar widgets com padrão CSS-like em `data/styles/custom.css`
 - Ao usar âncoras, layouts, estados (`$hover`, `$checked`, `$disabled`) e bindings de evento
 - Ao organizar tema e tokens visuais com variáveis OTML (`&` e `$`)
+- Ao criar UI em HTML/CSS dentro do módulo com `loadHtml`
 
 ## Fundamentos OTUI no projeto
 
@@ -50,12 +51,21 @@ description: "Projeta interfaces OTClient com OTUI e CSS-like. Use quando criar 
   - refinamento visual de widgets reutilizados
 - Ao ajustar UI global, altere CSS-like com impacto mínimo e previsível
 
+## UI HTML/CSS no módulo
+
+- No HTML, use `<link href="arquivo.css" />` no topo do arquivo
+- Use `*if`, `*for`, `*checked`, `*image-clip`, `*image-source`, `*color` e bindings `{{...}}`
+- Eventos inline usam `onclick`, `onhover`, `onchange`, `onescape`
+- O HTML suporta widgets como `UIItem`, `uicreature` e `window`
+- O CSS do módulo usa classes e propriedades `--image-*` para sprites e bordas
+
 ## Integração Lua + UI
 
 - Carregue com `g_ui.loadUI('arquivo', parent)` para painel no parent definido
 - Ou `g_ui.displayUI('arquivo')` para exibição direta
 - Capture elementos por `id` e conecte callbacks no Lua
 - Sempre destrua a UI no `terminate()`
+- Para HTML use `Controller:loadHtml('arquivo.html')` e `Controller:unloadHtml()`
 
 ## Checklist de qualidade de interface
 
